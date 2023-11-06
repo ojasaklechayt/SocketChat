@@ -8,7 +8,7 @@ const httpServer = http.createServer(app);
 
 const io = new Server(httpServer, {
     cors: {
-        origin: 'http://localhost:3000',
+        origin: 'https://socketchat-orpin.vercel.app/',
         methods: ['GET', 'POST'],
         allowedHeaders: ['my-custom-header'],
         credentials: true,
