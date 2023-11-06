@@ -6,7 +6,7 @@ const httpServer = http.createServer();
 
 const io = new Server(httpServer, {
     cors: {
-        origin: "http://localhost:3000", // Replace with your frontend URL
+        origin: "https://socketchat-backend.vercel.app/", // Replace with your frontend URL
         methods: ["GET", "POST"],
         allowedHeaders: ["my-custom-header"],
         credentials: true,
