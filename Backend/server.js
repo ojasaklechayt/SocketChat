@@ -4,15 +4,20 @@ const { Server } = require('socket.io');
 const cors = require('cors');
 
 const app = express();
-app.use(cors({
-    origin: 'https://socketchat-orpin.vercel.app',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    allowedHeaders: ['my-custom-header'],
-    credentials: true,
-}));
+// app.use(cors({
+//     origin: 'https://socketchat-orpin.vercel.app',
+//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//     allowedHeaders: ['my-custom-header'],
+//     credentials: true,
+// }));
 
 const httpServer = http.createServer(app);
-const io = new Server(httpServer);
+const io = require("socket.io")(httpServer, {
+    cors: {
+        origin: "https://socketchat-orpin.vercel.app",
+        methods: ["GET", "POST"]
+    }
+});
 
 
 io.on('connection', (socket) => {
