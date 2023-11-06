@@ -6,16 +6,15 @@ const cors = require('cors');
 const app = express();
 const httpServer = http.createServer(app);
 
-const io = new Server(httpServer, {
-    cors: {
-        origin: 'https://socketchat-orpin.vercel.app/',
-        methods: ['GET', 'POST'],
-        allowedHeaders: ['my-custom-header'],
-        credentials: true,
-    },
-});
+const io = new Server(httpServer);
 
-app.use(cors());
+// Set up CORS for your entire app
+app.use(cors({
+    origin: 'https://socketchat-orpin.vercel.app',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['my-custom-header'],
+    credentials: true,
+}));
 
 io.on('connection', (socket) => {
     console.log('A user connected:', socket.id);
